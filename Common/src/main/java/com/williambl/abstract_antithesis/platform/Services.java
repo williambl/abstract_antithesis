@@ -1,13 +1,15 @@
-package com.example.examplemod.platform;
+package com.williambl.abstract_antithesis.platform;
 
-import com.example.examplemod.Constants;
-import com.example.examplemod.platform.services.IPlatformHelper;
+import com.williambl.abstract_antithesis.Constants;
+import com.williambl.abstract_antithesis.platform.services.IPlatformHelper;
+import com.williambl.abstract_antithesis.platform.services.IRegistrationHelper;
 
 import java.util.ServiceLoader;
 
 public class Services {
 
     public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
+    public static final IRegistrationHelper REGISTRATION_HELPER = load(IRegistrationHelper.class);
 
     public static <T> T load(Class<T> clazz) {
 
