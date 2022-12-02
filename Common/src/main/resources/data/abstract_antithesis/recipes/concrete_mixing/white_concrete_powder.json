@@ -1,0 +1,20 @@
+{
+  "type": "abstract_antithesis:concrete_mixing",
+  "group": "concrete_powder",
+  "dye":
+  {
+    "item": "minecraft:white_dye"
+  },
+  "sand":
+  {
+    "item": "minecraft:sand"
+  },
+  "gravel":
+  {
+    "item": "minecraft:gravel"
+  },
+  "result": {
+    "count": 9,
+    "item": "minecraft:white_concrete_powder"
+  }
+}

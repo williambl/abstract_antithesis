@@ -11,7 +11,7 @@ import java.util.List;
 public class AbstractAntithesis {
 
     public static void init() {
-
+        new AARegistry();
     }
 
     public static ResourceLocation id(String path) {
