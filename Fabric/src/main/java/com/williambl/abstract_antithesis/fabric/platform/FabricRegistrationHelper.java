@@ -2,8 +2,13 @@ package com.williambl.abstract_antithesis.fabric.platform;
 
 import com.williambl.abstract_antithesis.platform.services.IRegistrationHelper;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -46,6 +51,12 @@ public class FabricRegistrationHelper implements IRegistrationHelper {
     @Override
     public <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String name, Supplier<T> sup) {
         final var res = Registry.register(Registry.RECIPE_SERIALIZER, id(name), sup.get());
+        return () -> res;
+    }
+
+    @Override
+    public <T extends AbstractMinecart> Supplier<EntityType<T>> registerMinecartType(String name, EntityType.EntityFactory<T> factory) {
+        final var res = Registry.register(Registry.ENTITY_TYPE, id(name), FabricEntityTypeBuilder.create(MobCategory.MISC, factory).dimensions(EntityDimensions.fixed(0.98F, 0.7F)).trackRangeChunks(8).build());
         return () -> res;
     }
 

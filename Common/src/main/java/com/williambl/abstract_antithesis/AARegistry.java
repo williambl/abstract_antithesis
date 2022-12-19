@@ -2,6 +2,7 @@ package com.williambl.abstract_antithesis;
 
 import com.williambl.abstract_antithesis.platform.Services;
 import com.williambl.abstract_antithesis.platform.services.IRegistrationHelper;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -28,4 +29,6 @@ public class AARegistry {
     public static final Supplier<BlockEntityType<ConcreteMixerBlockEntity>> CONCRETE_MIXER_BE = Services.REGISTRATION_HELPER.registerBEType("concrete_mixer", ConcreteMixerBlockEntity::new, () -> Set.of(CONCRETE_MIXER_BLOCK.get()));
 
     public static final Supplier<BlockItem> CONCRETE_MIXER_ITEM = Services.REGISTRATION_HELPER.registerItem("concrete_mixer", () -> new BlockItem(CONCRETE_MIXER_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
+
+    public static final Supplier<EntityType<TrackLayingCart>> TRACK_LAYING_CART = Services.REGISTRATION_HELPER.registerMinecartType("track_laying_cart", TrackLayingCart::new);
 }

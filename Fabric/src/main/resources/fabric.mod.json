@@ -20,6 +20,9 @@
     "entrypoints": {
       "main": [
         "com.williambl.abstract_antithesis.fabric.AbstractAntithesisInitialiser"
+      ],
+      "client": [
+        "com.williambl.abstract_antithesis.fabric.AbstractAntithesisClientInitialiser"
       ]
     },
     "mixins": [

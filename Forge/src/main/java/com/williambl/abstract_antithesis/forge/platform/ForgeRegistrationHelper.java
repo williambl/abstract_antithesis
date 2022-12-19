@@ -3,6 +3,9 @@ package com.williambl.abstract_antithesis.forge.platform;
 import com.williambl.abstract_antithesis.Constants;
 import com.williambl.abstract_antithesis.platform.services.IRegistrationHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.vehicle.AbstractMinecart;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -24,6 +27,7 @@ public class ForgeRegistrationHelper implements IRegistrationHelper {
     private final DeferredRegister<BlockEntityType<?>> blockEntityTypes = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Constants.MOD_ID);
     private final DeferredRegister<RecipeType<?>> recipeTypes = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, Constants.MOD_ID);
     private final DeferredRegister<RecipeSerializer<?>> recipeSerializers = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, Constants.MOD_ID);
+    private final DeferredRegister<EntityType<?>> entityTypes = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Constants.MOD_ID);
 
     @Override
     public <T extends Item> Supplier<T> registerItem(String name, Supplier<T> sup) {
@@ -48,5 +52,10 @@ public class ForgeRegistrationHelper implements IRegistrationHelper {
     @Override
     public <T extends RecipeSerializer<?>> Supplier<T> registerRecipeSerializer(String name, Supplier<T> sup) {
         return this.recipeSerializers.register(name, sup);
+    }
+
+    @Override
+    public <T extends AbstractMinecart> Supplier<EntityType<T>> registerMinecartType(String name, EntityType.EntityFactory<T> factory) {
+        return this.entityTypes.register(name, () -> EntityType.Builder.of(factory, MobCategory.MISC).sized(0.98F, 0.7F).clientTrackingRange(8).build(null));
     }
 }
