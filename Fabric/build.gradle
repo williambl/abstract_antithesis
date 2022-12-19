@@ -30,6 +30,8 @@ loom {
             runDir("run")
         }
     }
+
+    accessWidenerPath = file("${project(':Common').projectDir.path}/src/main/resources/abstract_antithesis.accesswidener")
 }
 
 

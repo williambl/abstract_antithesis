@@ -18,6 +18,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.*;
@@ -36,7 +37,10 @@ import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LecternBlock;
+import net.minecraft.world.level.block.PointedDripstoneBlock;
+import net.minecraft.world.level.block.SupportType;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -59,6 +63,8 @@ public class ConcreteMixerBlockEntity extends BlockEntity implements Clearable, 
     public static final int GRAVEL_SLOT = 2;
     public static final int RESULT_SLOT = 3;
     public static final int NUM_SLOTS = 4;
+
+    public static final int BLOCKS_ABOVE_DRIPSTONE_CHECK = 5;
 
     public static final TagKey<Item> DYES = TagKey.create(Registry.ITEM_REGISTRY, id("concrete_dyes"));
     public static final TagKey<Item> SAND = TagKey.create(Registry.ITEM_REGISTRY, id("concrete_sand"));
@@ -269,6 +275,41 @@ public class ConcreteMixerBlockEntity extends BlockEntity implements Clearable, 
                 be.ticksSinceCrafted = 0;
             }
         }
+
+        if (level.getGameTime() % 200 == 0) {
+            be.tryCraft(null);
+        }
+    }
+
+    private boolean isBelowDripstone() {
+        if (this.level == null) {
+            return false;
+        }
+
+        int maxY = this.getBlockPos().getY() + BLOCKS_ABOVE_DRIPSTONE_CHECK;
+        for (var pos = this.getBlockPos().mutable().move(Direction.UP);
+             pos.getY() <= maxY;
+             pos.move(Direction.UP)
+        ) {
+            var state = this.level.getBlockState(pos);
+            if (
+                    PointedDripstoneBlock.canDrip(this.level.getBlockState(pos))
+                            && PointedDripstoneBlock.getFluidAboveStalactite(this.level, pos, state)
+                            .filter(f -> f.fluid().defaultFluidState().is(FluidTags.WATER))
+                            .isPresent()
+            ) {
+                return true;
+            }
+
+            if (
+                    state.isFaceSturdy(this.level, pos, Direction.UP, SupportType.CENTER)
+                            || state.isFaceSturdy(this.level, pos, Direction.DOWN, SupportType.CENTER)
+            ) {
+                return false;
+            }
+        }
+
+        return false;
     }
 
     public void tryCraft(@Nullable Player player) {
@@ -278,7 +319,7 @@ public class ConcreteMixerBlockEntity extends BlockEntity implements Clearable, 
 
         var recipe = this.quickCheck.getRecipeFor(this, this.level);
 
-        if (recipe.isPresent()) {
+        if (recipe.isPresent() && this.isBelowDripstone()) {
             var result = recipe.get().assemble(this);
             this.dye.shrink(1);
             this.sand.shrink(4);

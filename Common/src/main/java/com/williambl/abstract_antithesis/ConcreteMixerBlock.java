@@ -68,7 +68,17 @@ public class ConcreteMixerBlock extends BaseEntityBlock {
             return InteractionResult.FAIL;
         }
 
-        return mixer.tryInsertFromHand(p_54527_, itemstack.split(1));
+        if (p_54525_.isClientSide()) {
+            return InteractionResult.SUCCESS;
+        }
+
+        var split = itemstack.split(1);
+        var res = mixer.tryInsertFromHand(p_54527_, split);
+        if (res != InteractionResult.SUCCESS) {
+            itemstack.grow(split.getCount());
+        }
+
+        return res;
     }
 
     @Nullable
