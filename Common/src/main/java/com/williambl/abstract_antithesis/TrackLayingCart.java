@@ -38,9 +38,9 @@ public class TrackLayingCart extends AbstractMinecartContainer {
         this.ticker = this.createTicker(level);
     }
 
-    protected TrackLayingCart(Level $$1, double $$2, double $$3, double $$4) {
-        super(AARegistry.TRACK_LAYING_CART.get(), $$2, $$3, $$4, $$1);
-        this.ticker = this.createTicker($$1);
+    protected TrackLayingCart(Level level, double x, double y, double z) {
+        super(AARegistry.TRACK_LAYING_CART.get(), x, y, z, level);
+        this.ticker = this.createTicker(level);
     }
 
     @Override
@@ -127,7 +127,7 @@ public class TrackLayingCart extends AbstractMinecartContainer {
 
     @Override
     public Item getDropItem() {
-        return Items.AIR;
+        return AARegistry.TRACK_LAYING_CART_ITEM.get();
     }
 
     @Override

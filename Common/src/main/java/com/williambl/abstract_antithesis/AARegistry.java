@@ -8,6 +8,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -31,4 +32,5 @@ public class AARegistry {
     public static final Supplier<BlockItem> CONCRETE_MIXER_ITEM = Services.REGISTRATION_HELPER.registerItem("concrete_mixer", () -> new BlockItem(CONCRETE_MIXER_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
 
     public static final Supplier<EntityType<TrackLayingCart>> TRACK_LAYING_CART = Services.REGISTRATION_HELPER.registerMinecartType("track_laying_cart", TrackLayingCart::new);
+    public static final Supplier<CustomCartItem> TRACK_LAYING_CART_ITEM = Services.REGISTRATION_HELPER.registerItem("track_laying_cart", () -> new CustomCartItem(TrackLayingCart::new, new Item.Properties().tab(CreativeModeTab.TAB_TRANSPORTATION)));
 }
