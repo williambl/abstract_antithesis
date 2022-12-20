@@ -6,6 +6,6 @@ import net.minecraft.client.renderer.entity.MinecartRenderer;
 
 public class AbstractAntithesisClient {
     public static void init() {
-        ClientServices.CLIENT.registerEntityRenderer(AARegistry.TRACK_LAYING_CART.get(), ctx -> new MinecartRenderer<>(ctx, ModelLayers.MINECART));
+        ClientServices.CLIENT.registerEntityRenderer(AARegistry.TRACK_LAYING_CART.get(), ctx -> new TrackLayingCartRenderer(ctx, ModelLayers.MINECART));
     }
 }
