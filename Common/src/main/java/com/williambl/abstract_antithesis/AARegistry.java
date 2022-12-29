@@ -39,4 +39,5 @@ public class AARegistry {
 
     public static final Supplier<BlockItem> ITEM_DETECTOR_RAIL_ITEM = Services.REGISTRATION_HELPER.registerItem("item_detector_rail", () -> new BlockItem(ITEM_DETECTOR_RAIL_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
 
+    public static final Supplier<Item> TRAIN_TICKET = Services.REGISTRATION_HELPER.registerItem("train_ticket", () -> new Item(new Item.Properties().stacksTo(16).tab(CreativeModeTab.TAB_TRANSPORTATION)));
 }

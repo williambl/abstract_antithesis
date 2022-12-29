@@ -51,7 +51,7 @@ public class ItemDetectorRailBlockEntity extends BlockEntity implements Clearabl
     }
 
     public boolean anyStacksMatch(Stream<ItemStack> stacks) {
-        return stacks.anyMatch(s1 -> this.stacks.stream().anyMatch(s1::sameItem));
+        return stacks.anyMatch(s1 -> this.stacks.stream().anyMatch(s2 -> s1.sameItem(s2) && (s1.getHoverName().equals(s2.getHoverName()))));
     }
 
     public boolean isValidForSlot(int slot, ItemStack item) {
