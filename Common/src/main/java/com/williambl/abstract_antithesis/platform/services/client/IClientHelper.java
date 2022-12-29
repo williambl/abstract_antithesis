@@ -1,12 +1,15 @@
 package com.williambl.abstract_antithesis.platform.services.client;
 
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
 
 public interface IClientHelper {
-    public <T extends Entity> void registerEntityRenderer(EntityType<T> type, EntityRendererProvider<T> rendererSup);
+    <T extends Entity> void registerEntityRenderer(EntityType<T> type, EntityRendererProvider<T> rendererSup);
+    void registerBlockRenderType(Block block, RenderType type);
 }

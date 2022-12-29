@@ -33,4 +33,10 @@ public class AARegistry {
 
     public static final Supplier<EntityType<TrackLayingCart>> TRACK_LAYING_CART = Services.REGISTRATION_HELPER.registerMinecartType("track_laying_cart", TrackLayingCart::new);
     public static final Supplier<CustomCartItem> TRACK_LAYING_CART_ITEM = Services.REGISTRATION_HELPER.registerItem("track_laying_cart", () -> new CustomCartItem(TrackLayingCart::new, new Item.Properties().tab(CreativeModeTab.TAB_TRANSPORTATION)));
+
+    public static final Supplier<ItemDetectorRailBlock> ITEM_DETECTOR_RAIL_BLOCK = Services.REGISTRATION_HELPER.registerBlock("item_detector_rail", () -> new ItemDetectorRailBlock(BlockBehaviour.Properties.copy(Blocks.DETECTOR_RAIL)));
+    public static final Supplier<BlockEntityType<ItemDetectorRailBlockEntity>> ITEM_DETECTOR_RAIL_BE = Services.REGISTRATION_HELPER.registerBEType("item_detector_rail", ItemDetectorRailBlockEntity::new, () -> Set.of(ITEM_DETECTOR_RAIL_BLOCK.get()));
+
+    public static final Supplier<BlockItem> ITEM_DETECTOR_RAIL_ITEM = Services.REGISTRATION_HELPER.registerItem("item_detector_rail", () -> new BlockItem(ITEM_DETECTOR_RAIL_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
+
 }

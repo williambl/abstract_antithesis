@@ -2,9 +2,12 @@ package com.williambl.abstract_antithesis.forge.platform.client;
 
 import com.williambl.abstract_antithesis.Constants;
 import com.williambl.abstract_antithesis.platform.services.client.IClientHelper;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -21,6 +24,11 @@ public class ForgeClientHelper implements IClientHelper {
     @Override
     public <T extends Entity> void registerEntityRenderer(EntityType<T> type, EntityRendererProvider<T> rendererSup) {
         rendererProviders.add(new RendererProviderEntry<>(type, rendererSup));
+    }
+
+    @Override
+    public void registerBlockRenderType(Block block, RenderType type) {
+        //no-op
     }
 
     @SubscribeEvent
