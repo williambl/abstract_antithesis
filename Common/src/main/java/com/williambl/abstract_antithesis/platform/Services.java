@@ -1,6 +1,7 @@
 package com.williambl.abstract_antithesis.platform;
 
 import com.williambl.abstract_antithesis.Constants;
+import com.williambl.abstract_antithesis.platform.services.IIntegrationHelper;
 import com.williambl.abstract_antithesis.platform.services.IPlatformHelper;
 import com.williambl.abstract_antithesis.platform.services.IRegistrationHelper;
 
@@ -10,6 +11,7 @@ public class Services {
 
     public static final IPlatformHelper PLATFORM = load(IPlatformHelper.class);
     public static final IRegistrationHelper REGISTRATION_HELPER = load(IRegistrationHelper.class);
+    public static final IIntegrationHelper INTEGRATIONS = load(IIntegrationHelper.class);
 
     public static <T> T load(Class<T> clazz) {
 

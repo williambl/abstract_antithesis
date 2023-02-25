@@ -1,5 +1,6 @@
 package com.williambl.abstract_antithesis;
 
+import com.williambl.abstract_antithesis.platform.Services;
 import net.minecraft.core.BlockPos;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.Container;
@@ -55,15 +56,20 @@ public class ItemDetectorRailBlock extends DetectorRailBlock implements EntityBl
         if (!(blockEntity instanceof ItemDetectorRailBlockEntity railBlockEntity)) {
             return new ArrayList<>();
         } else {
-            return super.getInteractingMinecartOfType(level, pos, cartClass, predicate.and(cart ->
-                this.canAcceptCart(cart, railBlockEntity)
-            ));
+            return Stream.concat(
+                    super.getInteractingMinecartOfType(level, pos, cartClass, predicate.and(cart ->
+                            this.canAcceptCart(cart, railBlockEntity)
+                    )).stream(),
+                    super.getInteractingMinecartOfType(level, pos, cartClass, predicate).stream()
+                            .flatMap(Services.INTEGRATIONS::getConnectedMinecarts)
+                            .filter(cartClass::isInstance).map(cartClass::cast)
+            ).toList();
         }
     }
 
     protected boolean canAcceptCart(Entity cart, @NotNull ItemDetectorRailBlockEntity blockEntity) {
         return cart.getSelfAndPassengers().anyMatch(entity ->
-            getStacksFromEntity(entity).map(blockEntity::anyStacksMatch).orElse(false)
+                getStacksFromEntity(entity).map(blockEntity::anyStacksMatch).orElse(false)
         );
     }
 
