@@ -45,6 +45,21 @@ subprojects {
             name = 'BlameJared Maven (CrT / Bookshelf)'
             url = 'https://maven.blamejared.com'
         }
+
+        maven {
+            name = 'Will BL'
+            url = 'https://maven.willbl.dev/releases'
+        }
+
+        maven {
+            name = 'Modrinth'
+            url = 'https://api.modrinth.com/maven'
+        }
+
+        maven {
+            name = 'Terraformers'
+            url = 'https://maven.terraformersmc.com'
+        }
     }
 
     tasks.withType(JavaCompile).configureEach {

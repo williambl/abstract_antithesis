@@ -10,4 +10,7 @@ public class ForgeIntegrationHelper implements IIntegrationHelper {
     public Stream<AbstractMinecart> getConnectedMinecarts(AbstractMinecart start) {
         return Stream.of();
     }
+
+    @Override
+    public void registerCartLinkingDispenserBehaviours() {}
 }

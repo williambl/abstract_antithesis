@@ -1,5 +1,6 @@
 package com.williambl.abstract_antithesis;
 
+import com.williambl.abstract_antithesis.platform.Services;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.food.FoodProperties;
@@ -12,6 +13,7 @@ public class AbstractAntithesis {
 
     public static void init() {
         new AARegistry();
+        Services.INTEGRATIONS.registerCartLinkingDispenserBehaviours();
     }
 
     public static ResourceLocation id(String path) {

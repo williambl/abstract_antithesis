@@ -7,4 +7,6 @@ import java.util.stream.Stream;
 public interface IIntegrationHelper {
 
     Stream<AbstractMinecart> getConnectedMinecarts(AbstractMinecart start);
+
+    void registerCartLinkingDispenserBehaviours();
 }
