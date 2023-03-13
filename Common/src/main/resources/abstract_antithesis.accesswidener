@@ -3,3 +3,6 @@ accessible class net/minecraft/world/level/block/PointedDripstoneBlock$FluidInfo
 accessible method net/minecraft/world/level/block/PointedDripstoneBlock getFluidAboveStalactite (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Ljava/util/Optional;
 accessible method net/minecraft/world/entity/vehicle/AbstractMinecart getDropItem ()Lnet/minecraft/world/item/Item;
 extendable method net/minecraft/world/level/block/DetectorRailBlock getInteractingMinecartOfType (Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Ljava/lang/Class;Ljava/util/function/Predicate;)Ljava/util/List;
+accessible field  net/minecraft/world/entity/vehicle/MinecartFurnace fuel I
+accessible field  net/minecraft/world/entity/vehicle/MinecartFurnace xPush D
+accessible field  net/minecraft/world/entity/vehicle/MinecartFurnace zPush D
