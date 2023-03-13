@@ -37,7 +37,9 @@ public class AARegistry {
     public static final Supplier<ItemDetectorRailBlock> ITEM_DETECTOR_RAIL_BLOCK = Services.REGISTRATION_HELPER.registerBlock("item_detector_rail", () -> new ItemDetectorRailBlock(BlockBehaviour.Properties.copy(Blocks.DETECTOR_RAIL)));
     public static final Supplier<BlockEntityType<ItemDetectorRailBlockEntity>> ITEM_DETECTOR_RAIL_BE = Services.REGISTRATION_HELPER.registerBEType("item_detector_rail", ItemDetectorRailBlockEntity::new, () -> Set.of(ITEM_DETECTOR_RAIL_BLOCK.get()));
 
-    public static final Supplier<BlockItem> ITEM_DETECTOR_RAIL_ITEM = Services.REGISTRATION_HELPER.registerItem("item_detector_rail", () -> new BlockItem(ITEM_DETECTOR_RAIL_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS)));
+    public static final Supplier<BlockItem> ITEM_DETECTOR_RAIL_ITEM = Services.REGISTRATION_HELPER.registerItem("item_detector_rail", () -> new BlockItem(ITEM_DETECTOR_RAIL_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_TRANSPORTATION)));
+    public static final Supplier<OneWayRailBlock> ONE_WAY_RAIL_BLOCK = Services.REGISTRATION_HELPER.registerBlock("one_way_rail", () -> new OneWayRailBlock(BlockBehaviour.Properties.copy(Blocks.DETECTOR_RAIL)));
+    public static final Supplier<BlockItem> ONE_WAY_RAIL_ITEM = Services.REGISTRATION_HELPER.registerItem("one_way_rail", () -> new BlockItem(ONE_WAY_RAIL_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_TRANSPORTATION)));
 
     public static final Supplier<Item> TRAIN_TICKET = Services.REGISTRATION_HELPER.registerItem("train_ticket", () -> new Item(new Item.Properties().stacksTo(16).tab(CreativeModeTab.TAB_TRANSPORTATION)));
 }
