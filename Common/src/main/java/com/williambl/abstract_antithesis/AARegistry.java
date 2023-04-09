@@ -1,5 +1,6 @@
 package com.williambl.abstract_antithesis;
 
+import com.williambl.abstract_antithesis.cart_banner.MinecartDecorationRecipe;
 import com.williambl.abstract_antithesis.concrete_mixer.ConcreteMixerBlock;
 import com.williambl.abstract_antithesis.concrete_mixer.ConcreteMixerBlockEntity;
 import com.williambl.abstract_antithesis.concrete_mixer.ConcreteRecipe;
@@ -8,12 +9,14 @@ import com.williambl.abstract_antithesis.item_detector_rail.ItemDetectorRailBloc
 import com.williambl.abstract_antithesis.one_way_rail.OneWayRailBlock;
 import com.williambl.abstract_antithesis.platform.Services;
 import com.williambl.abstract_antithesis.track_laying_cart.TrackLayingCart;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SimpleRecipeSerializer;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -47,4 +50,14 @@ public class AARegistry {
     public static final Supplier<BlockItem> ONE_WAY_RAIL_ITEM = Services.REGISTRATION_HELPER.registerItem("one_way_rail", () -> new BlockItem(ONE_WAY_RAIL_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_TRANSPORTATION)));
 
     public static final Supplier<Item> TRAIN_TICKET = Services.REGISTRATION_HELPER.registerItem("train_ticket", () -> new Item(new Item.Properties().stacksTo(16).tab(CreativeModeTab.TAB_TRANSPORTATION)));
+
+
+    public static final Supplier<RecipeType<MinecartDecorationRecipe>> MINECART_DECORATION_RECIPE_TYPE = Services.REGISTRATION_HELPER.registerRecipeType("crafting_special_minecart_decoration", () -> new RecipeType<>() {
+        @Override
+        public String toString() {
+            return "crafting_special_minecart_decoration";
+        }
+    });
+
+    public static final Supplier<RecipeSerializer<MinecartDecorationRecipe>> MINECART_DECORATION_RECIPE_SERIALIZER = Services.REGISTRATION_HELPER.registerRecipeSerializer("crafting_special_minecart_decoration", () -> new SimpleRecipeSerializer<>(MinecartDecorationRecipe::new));
 }

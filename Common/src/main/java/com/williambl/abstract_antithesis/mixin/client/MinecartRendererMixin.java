@@ -42,11 +42,12 @@ public abstract class MinecartRendererMixin<T extends AbstractMinecart> extends 
     @Inject(method = "render(Lnet/minecraft/world/entity/vehicle/AbstractMinecart;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "Lnet/minecraft/client/model/EntityModel;renderToBuffer(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)V"))
     private void abstractantithesis$renderMinecartBanner(T cart, float yaw, float partialTicks, PoseStack poses, MultiBufferSource buffers, int lighting, CallbackInfo ci) {
         CartBannerAccess banners = Services.INTEGRATIONS.getBannerAccess(cart);
-        var patterns = banners.getCartBannerPatterns();
-        poses.pushPose();
-        //poses.scale(1.0f, 0.5f, 1.0f);
-        poses.scale(-1.0F, -1.0F, 1.0F);
-        BannerRenderer.renderPatterns(poses, buffers, lighting, OverlayTexture.NO_OVERLAY, this.bannerPart, ModelBakery.SHIELD_BASE, false, patterns);
-        poses.popPose();
+        if (banners.hasCartBannerPatterns()) {
+            var patterns = banners.getCartBannerPatterns();
+            poses.pushPose();
+            poses.scale(-1.0F, -1.0F, 1.0F);
+            BannerRenderer.renderPatterns(poses, buffers, lighting, OverlayTexture.NO_OVERLAY, this.bannerPart, ModelBakery.SHIELD_BASE, false, patterns);
+            poses.popPose();
+        }
     }
 }

@@ -24,4 +24,8 @@ public interface CartBannerAccess {
 
         return BannerBlockEntity.createPatterns(baseColour, patterns);
     }
+
+    default boolean hasCartBannerPatterns() {
+        return this.getCartBannerPatterns() != null;
+    }
 }

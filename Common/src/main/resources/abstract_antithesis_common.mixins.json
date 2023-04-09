@@ -4,6 +4,8 @@
     "package": "com.williambl.abstract_antithesis.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
+        "MinecartItemDispenseBehaviourMixin",
+        "MinecartItemMixin"
     ],
     "client": [
         "client.MinecartRendererMixin"

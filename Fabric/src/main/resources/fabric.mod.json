@@ -23,6 +23,9 @@
       ],
       "client": [
         "com.williambl.abstract_antithesis.fabric.AbstractAntithesisClientInitialiser"
+      ],
+      "cardinal-components-entity": [
+        "com.williambl.abstract_antithesis.fabric.AbstractAntithesisInitialiser"
       ]
     },
     "mixins": [
@@ -37,6 +40,11 @@
       "java": ">=17"
     },
     "suggests": {
-    }
+    },
+  "custom": {
+    "cardinal-components": [
+      "abstract_antithesis:minecart_banner"
+    ]
+  }
   }
   

@@ -2,6 +2,7 @@ package com.williambl.abstract_antithesis.fabric.platform;
 
 import com.williambl.abstract_antithesis.cart_banner.CartBannerAccess;
 import com.williambl.abstract_antithesis.fabric.CammieIntegration;
+import com.williambl.abstract_antithesis.fabric.MinecartBannerComponent;
 import com.williambl.abstract_antithesis.platform.services.IIntegrationHelper;
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
@@ -32,22 +33,6 @@ public class FabricIntegrationHelper implements IIntegrationHelper {
 
     @Override
     public CartBannerAccess getBannerAccess(AbstractMinecart cart) {
-        return new CartBannerAccess() {
-            @Override
-            public void setCartBannerPatternsNbt(CompoundTag tag) {
-                //
-            }
-
-            @Override
-            public CompoundTag getCartBannerPatternsNbt() {
-                return Util.make(new CompoundTag(), tag -> {
-                    tag.putInt("Base", DyeColor.GREEN.getId());
-                    tag.put("Patterns", Util.make(new ListTag(), list -> list.add(Util.make(new CompoundTag(), patterns -> {
-                        patterns.putString("Pattern", Registry.BANNER_PATTERN.get(BannerPatterns.CREEPER).getHashname());
-                        patterns.putInt("Color", DyeColor.WHITE.getId());
-                    }))));
-                });
-            }
-        };
+        return cart.getComponent(MinecartBannerComponent.KEY);
     }
 }

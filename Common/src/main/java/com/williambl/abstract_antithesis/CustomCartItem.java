@@ -1,5 +1,6 @@
 package com.williambl.abstract_antithesis;
 
+import com.williambl.abstract_antithesis.cart_banner.CartBanners;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.BlockSource;
@@ -63,6 +64,8 @@ public class CustomCartItem extends Item {
                 cart.setCustomName(stack.getHoverName());
             }
 
+            CartBanners.setCartBannerPatterns(cart, stack);
+
             level.addFreshEntity(cart);
             stack.shrink(1);
             return stack;
@@ -101,6 +104,8 @@ public class CustomCartItem extends Item {
                 if (stack.hasCustomHoverName()) {
                     cart.setCustomName(stack.getHoverName());
                 }
+
+                CartBanners.setCartBannerPatterns(cart, stack);
 
                 level.addFreshEntity(cart);
                 level.gameEvent(GameEvent.ENTITY_PLACE, pos, Context.of(ctx.getPlayer(), level.getBlockState(pos.below())));
