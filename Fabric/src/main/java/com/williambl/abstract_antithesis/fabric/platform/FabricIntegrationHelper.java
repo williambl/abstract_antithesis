@@ -29,4 +29,25 @@ public class FabricIntegrationHelper implements IIntegrationHelper {
             CammieIntegration.registerLinkingDispenserBehaviour();
         }
     }
+
+    @Override
+    public CartBannerAccess getBannerAccess(AbstractMinecart cart) {
+        return new CartBannerAccess() {
+            @Override
+            public void setCartBannerPatternsNbt(CompoundTag tag) {
+                //
+            }
+
+            @Override
+            public CompoundTag getCartBannerPatternsNbt() {
+                return Util.make(new CompoundTag(), tag -> {
+                    tag.putInt("Base", DyeColor.GREEN.getId());
+                    tag.put("Patterns", Util.make(new ListTag(), list -> list.add(Util.make(new CompoundTag(), patterns -> {
+                        patterns.putString("Pattern", Registry.BANNER_PATTERN.get(BannerPatterns.CREEPER).getHashname());
+                        patterns.putInt("Color", DyeColor.WHITE.getId());
+                    }))));
+                });
+            }
+        };
+    }
 }

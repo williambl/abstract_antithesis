@@ -1,5 +1,6 @@
 package com.williambl.abstract_antithesis.forge.platform;
 
+import com.williambl.abstract_antithesis.cart_banner.CartBannerAccess;
 import com.williambl.abstract_antithesis.platform.services.IIntegrationHelper;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
 
@@ -13,4 +14,9 @@ public class ForgeIntegrationHelper implements IIntegrationHelper {
 
     @Override
     public void registerCartLinkingDispenserBehaviours() {}
+
+    @Override
+    public CartBannerAccess getBannerAccess(AbstractMinecart cart) {
+        return null; //todo
+    }
 }
