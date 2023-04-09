@@ -1,6 +1,7 @@
-package com.williambl.abstract_antithesis;
+package com.williambl.abstract_antithesis.client.track_laying_cart;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.williambl.abstract_antithesis.track_laying_cart.TrackLayingCart;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.BlockRenderDispatcher;
@@ -9,7 +10,6 @@ import net.minecraft.client.renderer.entity.MinecartRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 

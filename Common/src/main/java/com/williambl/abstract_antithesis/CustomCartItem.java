@@ -6,6 +6,8 @@ import net.minecraft.core.BlockSource;
 import net.minecraft.core.Direction;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.core.dispenser.DispenseItemBehavior;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
@@ -108,6 +110,7 @@ public class CustomCartItem extends Item {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
     }
+
 
     @FunctionalInterface
     public interface MinecartFactory {

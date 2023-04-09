@@ -1,4 +1,4 @@
-package com.williambl.abstract_antithesis;
+package com.williambl.abstract_antithesis.one_way_rail;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.*;
 
 public class OneWayRailBlock extends BaseRailBlock {
-    protected OneWayRailBlock(Properties properties) {
+    public OneWayRailBlock(Properties properties) {
         super(true, properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(RAIL_SHAPE_STRAIGHT, RailShape.NORTH_SOUTH).setValue(HORIZONTAL_FACING, Direction.NORTH).setValue(WATERLOGGED, false));
     }

@@ -1,5 +1,6 @@
-package com.williambl.abstract_antithesis;
+package com.williambl.abstract_antithesis.track_laying_cart;
 
+import com.williambl.abstract_antithesis.AARegistry;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -22,7 +23,6 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.List;
 import java.util.Optional;
 
 @MethodsReturnNonnullByDefault
@@ -33,12 +33,12 @@ public class TrackLayingCart extends AbstractMinecartContainer {
 
     private final Runnable ticker;
 
-    protected TrackLayingCart(EntityType<? extends TrackLayingCart> cart, Level level) {
+    public TrackLayingCart(EntityType<? extends TrackLayingCart> cart, Level level) {
         super(cart, level);
         this.ticker = this.createTicker(level);
     }
 
-    protected TrackLayingCart(Level level, double x, double y, double z) {
+    public TrackLayingCart(Level level, double x, double y, double z) {
         super(AARegistry.TRACK_LAYING_CART.get(), x, y, z, level);
         this.ticker = this.createTicker(level);
     }

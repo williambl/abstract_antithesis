@@ -26,7 +26,8 @@
       ]
     },
     "mixins": [
-      "abstract_antithesis.mixins.json"
+      "abstract_antithesis.mixins.json",
+      "abstract_antithesis_common.mixins.json"
     ],
   
     "depends": {

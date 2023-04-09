@@ -3,8 +3,9 @@
 // (powered by FernFlower decompiler)
 //
 
-package com.williambl.abstract_antithesis;
+package com.williambl.abstract_antithesis.item_detector_rail;
 
+import com.williambl.abstract_antithesis.AARegistry;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

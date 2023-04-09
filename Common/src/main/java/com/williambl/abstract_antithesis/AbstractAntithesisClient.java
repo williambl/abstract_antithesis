@@ -1,9 +1,10 @@
 package com.williambl.abstract_antithesis;
 
+import com.williambl.abstract_antithesis.client.cart_banner.CartBannersClient;
+import com.williambl.abstract_antithesis.client.track_laying_cart.TrackLayingCartRenderer;
 import com.williambl.abstract_antithesis.platform.ClientServices;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.MinecartRenderer;
 
 public class AbstractAntithesisClient {
     public static void init() {

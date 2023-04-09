@@ -1,5 +1,6 @@
-package com.williambl.abstract_antithesis;
+package com.williambl.abstract_antithesis.concrete_mixer;
 
+import com.williambl.abstract_antithesis.AARegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

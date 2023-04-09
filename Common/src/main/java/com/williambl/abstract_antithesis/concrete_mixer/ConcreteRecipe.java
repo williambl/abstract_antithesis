@@ -1,6 +1,7 @@
-package com.williambl.abstract_antithesis;
+package com.williambl.abstract_antithesis.concrete_mixer;
 
 import com.google.gson.JsonObject;
+import com.williambl.abstract_antithesis.AARegistry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
