@@ -26,6 +26,6 @@ public interface CartBannerAccess {
     }
 
     default boolean hasCartBannerPatterns() {
-        return this.getCartBannerPatterns() != null;
+        return this.getCartBannerPatternsNbt() != null;
     }
 }
