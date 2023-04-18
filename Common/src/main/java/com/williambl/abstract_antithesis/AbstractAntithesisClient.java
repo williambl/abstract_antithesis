@@ -10,6 +10,7 @@ public class AbstractAntithesisClient {
     public static void init() {
         ClientServices.CLIENT.registerEntityRenderer(AARegistry.TRACK_LAYING_CART.get(), ctx -> new TrackLayingCartRenderer(ctx, ModelLayers.MINECART));
         ClientServices.CLIENT.registerBlockRenderType(AARegistry.ITEM_DETECTOR_RAIL_BLOCK.get(), RenderType.cutout());
+        ClientServices.CLIENT.registerBlockRenderType(AARegistry.ONE_WAY_RAIL_BLOCK.get(), RenderType.cutout());
         CartBannersClient.init();
     }
 }

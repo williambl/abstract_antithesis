@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "abstract_antithesis:item/train_ticket"
-  }
-}

@@ -24,6 +24,9 @@
       "client": [
         "com.williambl.abstract_antithesis.fabric.AbstractAntithesisClientInitialiser"
       ],
+      "fabric-datagen": [
+        "com.williambl.abstract_antithesis.fabric.data.AADatagen"
+      ],
       "cardinal-components-entity": [
         "com.williambl.abstract_antithesis.fabric.AbstractAntithesisInitialiser"
       ]

@@ -59,5 +59,5 @@ public class AARegistry {
         }
     });
 
-    public static final Supplier<RecipeSerializer<MinecartDecorationRecipe>> MINECART_DECORATION_RECIPE_SERIALIZER = Services.REGISTRATION_HELPER.registerRecipeSerializer("crafting_special_minecart_decoration", () -> new SimpleRecipeSerializer<>(MinecartDecorationRecipe::new));
+    public static final Supplier<SimpleRecipeSerializer<MinecartDecorationRecipe>> MINECART_DECORATION_RECIPE_SERIALIZER = Services.REGISTRATION_HELPER.registerRecipeSerializer("crafting_special_minecart_decoration", () -> new SimpleRecipeSerializer<>(MinecartDecorationRecipe::new));
 }

@@ -6,21 +6,19 @@
 package com.williambl.abstract_antithesis.concrete_mixer;
 
 import com.williambl.abstract_antithesis.AARegistry;
+import com.williambl.abstract_antithesis.AATags;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.RecipeHolder;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -34,8 +32,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-import static com.williambl.abstract_antithesis.AbstractAntithesis.id;
-
 @MethodsReturnNonnullByDefault
 public class ConcreteMixerBlockEntity extends BlockEntity implements Clearable, WorldlyContainer, RecipeHolder {
     public static final int DYE_SLOT = 0;
@@ -46,9 +42,6 @@ public class ConcreteMixerBlockEntity extends BlockEntity implements Clearable, 
 
     public static final int BLOCKS_ABOVE_DRIPSTONE_CHECK = 5;
 
-    public static final TagKey<Item> DYES = TagKey.create(Registry.ITEM_REGISTRY, id("concrete_dyes"));
-    public static final TagKey<Item> SAND = TagKey.create(Registry.ITEM_REGISTRY, id("concrete_sand"));
-    public static final TagKey<Item> GRAVEL = TagKey.create(Registry.ITEM_REGISTRY, id("concrete_gravel"));
     private final RecipeManager.CachedCheck<Container, ConcreteRecipe> quickCheck;
 
     ItemStack dye = ItemStack.EMPTY;
@@ -65,9 +58,9 @@ public class ConcreteMixerBlockEntity extends BlockEntity implements Clearable, 
 
     public boolean isValidForSlot(int slot, ItemStack item) {
         return switch (slot) {
-            case DYE_SLOT -> item.is(DYES);
-            case SAND_SLOT -> item.is(SAND);
-            case GRAVEL_SLOT -> item.is(GRAVEL);
+            case DYE_SLOT -> item.is(AATags.DYES);
+            case SAND_SLOT -> item.is(AATags.SAND);
+            case GRAVEL_SLOT -> item.is(AATags.GRAVEL);
             default -> false;
         };
     }
@@ -329,11 +322,11 @@ public class ConcreteMixerBlockEntity extends BlockEntity implements Clearable, 
             return InteractionResult.SUCCESS;
         }
 
-        if (stack.is(DYES) && (this.dye.isEmpty() || ItemStack.isSameItemSameTags(this.dye, stack))) {
+        if (stack.is(AATags.DYES) && (this.dye.isEmpty() || ItemStack.isSameItemSameTags(this.dye, stack))) {
             int maxAmount = this.dye.isEmpty() ? stack.getCount() : this.dye.getMaxStackSize() - this.dye.getCount();
             int amount = ContainerHelper.clearOrCountMatchingItems(
                     stack,
-                    s -> s.is(DYES),
+                    s -> s.is(AATags.DYES),
                     maxAmount,
                     true
             );
@@ -346,11 +339,11 @@ public class ConcreteMixerBlockEntity extends BlockEntity implements Clearable, 
             this.tryCraft(player);
             return InteractionResult.SUCCESS;
         }
-        if (stack.is(SAND) && (this.sand.isEmpty() || ItemStack.isSameItemSameTags(this.sand, stack))) {
+        if (stack.is(AATags.SAND) && (this.sand.isEmpty() || ItemStack.isSameItemSameTags(this.sand, stack))) {
             int maxAmount = this.sand.isEmpty() ? stack.getCount() : this.sand.getMaxStackSize() - this.sand.getCount();
             int amount = ContainerHelper.clearOrCountMatchingItems(
                     stack,
-                    s -> s.is(SAND),
+                    s -> s.is(AATags.SAND),
                     maxAmount,
                     true
             );
@@ -363,11 +356,11 @@ public class ConcreteMixerBlockEntity extends BlockEntity implements Clearable, 
             this.tryCraft(player);
             return InteractionResult.SUCCESS;
         }
-        if (stack.is(GRAVEL) && (this.gravel.isEmpty() || ItemStack.isSameItemSameTags(this.gravel, stack))) {
+        if (stack.is(AATags.GRAVEL) && (this.gravel.isEmpty() || ItemStack.isSameItemSameTags(this.gravel, stack))) {
             int maxAmount = this.gravel.isEmpty() ? stack.getCount() : this.gravel.getMaxStackSize() - this.gravel.getCount();
             int amount = ContainerHelper.clearOrCountMatchingItems(
                     stack,
-                    s -> s.is(GRAVEL),
+                    s -> s.is(AATags.GRAVEL),
                     maxAmount,
                     true
             );
